@@ -1,4 +1,4 @@
-package com.example.composerickandmorty.ui.theme
+package com.example.composerickandmorty.ui.view.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
