@@ -1,5 +1,6 @@
 package com.example.composerickandmorty.core.di
 
+import com.example.composerickandmorty.data.network.character.CharacterApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,5 +20,11 @@ object NetworkModule {
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCharacterApiClient(retrofit: Retrofit): CharacterApiClient {
+        return retrofit.create(CharacterApiClient::class.java)
     }
 }
