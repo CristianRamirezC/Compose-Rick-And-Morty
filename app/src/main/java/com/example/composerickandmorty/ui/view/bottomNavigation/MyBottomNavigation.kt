@@ -16,9 +16,10 @@ import com.example.composerickandmorty.R
 
 @Composable
 fun MyBottomNavigation(navController: NavController) {
-    val items = listOf(
+    val bottomNavItems = listOf(
         BottomNavItem.Characters,
         BottomNavItem.Episodes,
+        BottomNavItem.Locations
     )
     BottomNavigation(
         backgroundColor = colorResource(id = R.color.teal_200),
@@ -26,7 +27,7 @@ fun MyBottomNavigation(navController: NavController) {
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
-        items.forEach { item ->
+        bottomNavItems.forEach { item ->
             BottomNavigationItem(
                 icon = {
                     Icon(

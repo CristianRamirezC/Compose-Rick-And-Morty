@@ -15,4 +15,10 @@ sealed class BottomNavItem(var title: String, var icon: Int, var screenRoute: St
         icon = R.drawable.ic_episodes,
         screenRoute = "episodes"
     )
+
+    object Locations : BottomNavItem(
+        title = "Locations",
+        icon = R.drawable.ic_locations,
+        screenRoute = "locations"
+    )
 }
