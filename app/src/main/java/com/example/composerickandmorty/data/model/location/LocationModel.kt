@@ -7,5 +7,4 @@ data class LocationModel(
     @SerializedName("name") var locationName: String = "",
     @SerializedName("type") var locationType: String = "",
     @SerializedName("dimension") var locationDimension: String = "",
-
-    )
+)
