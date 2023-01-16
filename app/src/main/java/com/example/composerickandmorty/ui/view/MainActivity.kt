@@ -8,7 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 
 import androidx.compose.ui.Modifier
-import com.example.composerickandmorty.ui.view.bottomNavigation.MainScreenView
+import com.example.composerickandmorty.ui.view.bottomNavigation.MainNavigationScreenView
 import com.example.composerickandmorty.ui.view.theme.ComposeRickAndMortyTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreenView()
+                    MainNavigationScreenView()
                 }
             }
         }

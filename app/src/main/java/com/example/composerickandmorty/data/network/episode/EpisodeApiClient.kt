@@ -5,7 +5,9 @@ import com.example.composerickandmorty.data.model.location.LocationModel
 import retrofit2.Response
 import retrofit2.http.GET
 
+private const val EPISODE_API_URL: String = "episode"
+
 interface EpisodeApiClient {
-    @GET("episode")
+    @GET(EPISODE_API_URL)
     suspend fun getAllEpisodes(): Response<List<EpisodeModel>>
 }

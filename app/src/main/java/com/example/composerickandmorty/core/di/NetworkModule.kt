@@ -35,7 +35,7 @@ object NetworkModule {
     //Episode Api Client
     @Singleton
     @Provides
-    fun provideClientApiClient(retrofit: Retrofit): EpisodeApiClient {
+    fun provideEpisodeApiClient(retrofit: Retrofit): EpisodeApiClient {
         return retrofit.create(EpisodeApiClient::class.java)
     }
 
@@ -45,5 +45,4 @@ object NetworkModule {
     fun provideLocationApiClient(retrofit: Retrofit): LocationApiClient {
         return retrofit.create(LocationApiClient::class.java)
     }
-
 }
