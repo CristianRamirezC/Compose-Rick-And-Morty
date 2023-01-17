@@ -11,5 +11,4 @@ data class CharacterModel(
     @SerializedName("origin") val characterOrigin: CharacterLocationModel,
     @SerializedName("location") val characterLocation: CharacterLocationModel,
     @SerializedName("Image") val characterImage: String = "",
-    @SerializedName("episode") val characterEpisodesList: List<String>
 )

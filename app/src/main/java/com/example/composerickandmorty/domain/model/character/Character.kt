@@ -13,7 +13,6 @@ data class Character(
     val characterOrigin: CharacterLocationModel,
     val characterLocation: CharacterLocationModel,
     val characterImage: String,
-    val characterEpisodesList: List<String>
 )
 
 //Mapper from CharacterModel (data Layer Model)
@@ -27,5 +26,4 @@ fun CharacterModel.toDomain() = Character(
     characterOrigin,
     characterLocation,
     characterImage,
-    characterEpisodesList
 )
