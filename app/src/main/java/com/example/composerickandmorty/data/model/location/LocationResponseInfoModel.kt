@@ -3,8 +3,8 @@ package com.example.composerickandmorty.data.model.location
 import com.google.gson.annotations.SerializedName
 
 data class LocationResponseInfoModel(
-    @SerializedName("count") var numberOfLocations: Int = 0,
-    @SerializedName("pages") var numberOfPages: Int = 0,
-    @SerializedName("next") var nextPage: String = "",
-    @SerializedName("prev") var previousPage: String = ""
+    @SerializedName("count") val numberOfLocations: Int = 0,
+    @SerializedName("pages") val numberOfPages: Int = 0,
+    @SerializedName("next") val nextPage: String = "",
+    @SerializedName("prev") val previousPage: String = ""
 )

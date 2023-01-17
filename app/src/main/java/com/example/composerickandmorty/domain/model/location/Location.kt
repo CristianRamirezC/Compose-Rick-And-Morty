@@ -4,10 +4,10 @@ import com.example.composerickandmorty.data.model.location.LocationModel
 import com.google.gson.annotations.SerializedName
 
 data class Location(
-    var locationId: Int,
-    var locationName: String,
-    var locationType: String,
-    var locationDimension: String,
+    val locationId: Int,
+    val locationName: String,
+    val locationType: String,
+    val locationDimension: String,
 )
 
 
