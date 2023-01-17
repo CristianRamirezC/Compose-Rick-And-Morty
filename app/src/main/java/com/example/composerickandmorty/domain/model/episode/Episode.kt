@@ -4,10 +4,10 @@ import com.example.composerickandmorty.data.model.episode.EpisodeModel
 import com.google.gson.annotations.SerializedName
 
 data class Episode(
-    var episodeId: Int,
-    var episodeName: String,
-    var episodeAirDate: String,
-    var episodeSeason: String
+    val episodeId: Int,
+    val episodeName: String,
+    val episodeAirDate: String,
+    val episodeSeason: String
 )
 
 
