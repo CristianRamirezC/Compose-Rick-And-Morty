@@ -14,15 +14,18 @@ import javax.inject.Singleton
 private const val BASE_URL: String = "https://rickandmortyapi.com/api/"
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(SingletonComponent::class) //scope (application/viewModel/activity/fragment/view etc)
 object NetworkModule {
 
     //Retrofit
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        return Retrofit
+            .Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     //Character Api Client
