@@ -23,19 +23,19 @@ class CharacterViewModel
     private var _charactersList = MutableLiveData<List<Character>>()
     val charactersList: LiveData<List<Character>> = _charactersList
 
-    private var _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    private var _isCharacterLoading = MutableLiveData<Boolean>()
+    val isCharacterLoading: LiveData<Boolean> = _isCharacterLoading
 
     fun getCharacters() {
         viewModelScope.launch {
 
-            _isLoading.postValue(true)
+            _isCharacterLoading.postValue(true)
 
             val characters = getCharactersUseCase()
             _charactersList.postValue(characters.responseResultsList)
             _charactersResponseInfo.postValue(characters.responseInfo)
 
-            _isLoading.postValue(false)
+            _isCharacterLoading.postValue(false)
         }
     }
 }

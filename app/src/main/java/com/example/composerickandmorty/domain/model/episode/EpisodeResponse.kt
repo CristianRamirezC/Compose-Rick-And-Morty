@@ -6,7 +6,7 @@ import com.example.composerickandmorty.data.model.episode.EpisodeResponseModel
 import com.google.gson.annotations.SerializedName
 
 data class EpisodeResponse(
-    val episodeInfoModel: EpisodeResponseInfo,
+    val episodeInfo: EpisodeResponseInfo,
     val episodeResultsList: List<Episode>
 )
 

@@ -6,7 +6,7 @@ import com.example.composerickandmorty.data.model.location.LocationResponseModel
 import com.google.gson.annotations.SerializedName
 
 data class LocationResponse(
-    val locationResponseInfoModel: LocationResponseInfo,
+    val locationResponseInfo: LocationResponseInfo,
     val locationResultsList: List<Location>
 )
 
