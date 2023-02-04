@@ -5,7 +5,7 @@ import com.example.composerickandmorty.R
 sealed class BottomNavItem(var title: String, var icon: Int, var screenRoute: String) {
 
     object Characters : BottomNavItem(
-        title = "Home",
+        title = "Characters",
         icon = R.drawable.ic_characters,
         screenRoute = "characters"
     )
