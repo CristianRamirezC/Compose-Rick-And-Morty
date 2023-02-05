@@ -7,15 +7,19 @@ import androidx.navigation.compose.composable
 import com.example.composerickandmorty.ui.view.characters.CharactersScreen
 import com.example.composerickandmorty.ui.view.episodes.EpisodesScreen
 import com.example.composerickandmorty.ui.view.locations.LocationsScreen
+import com.example.composerickandmorty.ui.viewModel.character.CharacterViewModel
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(
+    navController: NavHostController,
+    characterViewModel: CharacterViewModel
+) {
     NavHost(
         navController = navController,
         startDestination = BottomNavItem.Characters.screenRoute
     ) {
         composable(route = BottomNavItem.Characters.screenRoute) {
-            CharactersScreen()
+            CharactersScreen(characterViewModel)
         }
 
         composable(route = BottomNavItem.Episodes.screenRoute) {

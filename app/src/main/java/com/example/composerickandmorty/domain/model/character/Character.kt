@@ -1,8 +1,6 @@
 package com.example.composerickandmorty.domain.model.character
 
-import com.example.composerickandmorty.data.model.character.CharacterLocationModel
 import com.example.composerickandmorty.data.model.character.CharacterModel
-import com.google.gson.annotations.SerializedName
 
 data class Character(
     val characterID: Int,
@@ -10,8 +8,8 @@ data class Character(
     val characterStatus: String,
     val characterSpecies: String,
     val characterGender: String,
-    val characterOrigin: CharacterLocationModel,
-    val characterLocation: CharacterLocationModel,
+    val characterOrigin: CharacterLocation,
+    val characterLocation: CharacterLocation,
     val characterImage: String,
 )
 
@@ -23,7 +21,7 @@ fun CharacterModel.toDomain() = Character(
     characterStatus,
     characterSpecies,
     characterGender,
-    characterOrigin,
-    characterLocation,
+    characterOrigin.toDomain(),
+    characterLocation.toDomain(),
     characterImage,
 )

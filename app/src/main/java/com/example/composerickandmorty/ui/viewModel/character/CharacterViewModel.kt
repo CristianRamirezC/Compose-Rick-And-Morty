@@ -1,5 +1,6 @@
 package com.example.composerickandmorty.ui.viewModel.character
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +27,7 @@ class CharacterViewModel
     private var _isCharacterLoading = MutableLiveData<Boolean>()
     val isCharacterLoading: LiveData<Boolean> = _isCharacterLoading
 
-    fun getCharacters() {
+    fun onCreate() {
         viewModelScope.launch {
 
             _isCharacterLoading.postValue(true)

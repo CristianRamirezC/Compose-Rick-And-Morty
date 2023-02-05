@@ -17,6 +17,6 @@ data class CharacterModel(
     val characterOrigin: CharacterLocationModel = CharacterLocationModel(),
     @SerializedName("location")
     val characterLocation: CharacterLocationModel = CharacterLocationModel(),
-    @SerializedName("Image")
+    @SerializedName("image")
     val characterImage: String = "",
 )

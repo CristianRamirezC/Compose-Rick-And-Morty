@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.composerickandmorty.domain.location.GetLocationsUseCase
 import com.example.composerickandmorty.domain.model.location.Location
 import com.example.composerickandmorty.domain.model.location.LocationResponseInfo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class LocationViewModel @Inject constructor(
     private val getLocationsUseCase: GetLocationsUseCase
 ) : ViewModel() {
@@ -24,7 +26,7 @@ class LocationViewModel @Inject constructor(
     val isLocationLoading: LiveData<Boolean> = _isLocationLoading
 
 
-    fun getLocations() {
+    fun onCreate() {
 
         viewModelScope.launch {
             _isLocationLoading.postValue(true)

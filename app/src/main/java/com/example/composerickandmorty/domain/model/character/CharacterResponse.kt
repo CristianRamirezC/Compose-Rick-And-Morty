@@ -9,7 +9,7 @@ data class CharacterResponse(
 
 fun CharacterResponseModel.toDomain() = CharacterResponse(
     responseInfo.toDomain(),
-    responseResultsList.map {
-        it.toDomain()
+    responseResultsList.map { characterModel ->
+        characterModel.toDomain()
     }
 )

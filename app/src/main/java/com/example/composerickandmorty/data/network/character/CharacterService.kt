@@ -1,5 +1,6 @@
 package com.example.composerickandmorty.data.network.character
 
+import android.util.Log
 import com.example.composerickandmorty.data.model.character.CharacterModel
 import com.example.composerickandmorty.data.model.character.CharacterResponseModel
 import kotlinx.coroutines.Dispatchers

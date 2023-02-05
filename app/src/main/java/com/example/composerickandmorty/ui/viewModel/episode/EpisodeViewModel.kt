@@ -25,7 +25,7 @@ class EpisodeViewModel @Inject constructor(
     private var _isEpisodeLoading = MutableLiveData<Boolean>()
     val isEpisodeLoading: LiveData<Boolean> = _isEpisodeLoading
 
-    fun getEpisodes() {
+    fun onCreate() {
         viewModelScope.launch {
             _isEpisodeLoading.postValue(true)
 
