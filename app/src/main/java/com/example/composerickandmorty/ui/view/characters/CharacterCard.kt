@@ -66,53 +66,66 @@ fun CharacterCardInformation(
             .fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Column() {
-            Text(
-                modifier = Modifier,
-                text = character.characterName,
-                style = MaterialTheme.typography.h4.copy(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp
-                ),
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.height(5.dp))
-            Text(
-                modifier = Modifier,
-                text = character.characterGender,
-                style = MaterialTheme.typography.h5.copy(
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.ExtraLight
-                )
-
-            )
-            Text(
-                modifier = Modifier,
-                text = character.characterSpecies,
-                style = MaterialTheme.typography.h5.copy(
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.ExtraLight
-                )
-
-            )
-        }
+        MainCharacterCardInformation(character)
         Divider(
             modifier = Modifier
                 .height(1.dp)
                 .fillMaxWidth()
         )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = "Status:"
+        CharacterStatus(character)
+    }
+}
+
+@Composable
+fun CharacterStatus(
+    character: Character
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = "Status:"
+        )
+        Text(
+            text = character.characterStatus,
+            fontStyle = FontStyle.Italic
+        )
+    }
+}
+
+@Composable
+fun MainCharacterCardInformation(
+    character: Character
+) {
+    Column() {
+        Text(
+            modifier = Modifier,
+            text = character.characterName,
+            style = MaterialTheme.typography.h4.copy(
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp
+            ),
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        Text(
+            modifier = Modifier,
+            text = character.characterGender,
+            style = MaterialTheme.typography.h5.copy(
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Light
             )
-            Text(
-                text = character.characterStatus,
-                fontStyle = FontStyle.Italic
+        )
+        Text(
+            modifier = Modifier,
+            text = character.characterSpecies,
+            style = MaterialTheme.typography.h5.copy(
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Light
             )
-        }
+
+        )
     }
 }

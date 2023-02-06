@@ -16,7 +16,6 @@ fun CharactersScreen(
 ) {
     val characterList: List<Character> by characterViewModel
         .charactersList.observeAsState(initial = emptyList())
-
     LazyColumn(
         modifier = Modifier
             .fillMaxHeight()
