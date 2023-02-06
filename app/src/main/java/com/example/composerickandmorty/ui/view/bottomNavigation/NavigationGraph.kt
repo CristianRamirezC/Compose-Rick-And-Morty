@@ -8,11 +8,15 @@ import com.example.composerickandmorty.ui.view.characters.CharactersScreen
 import com.example.composerickandmorty.ui.view.episodes.EpisodesScreen
 import com.example.composerickandmorty.ui.view.locations.LocationsScreen
 import com.example.composerickandmorty.ui.viewModel.character.CharacterViewModel
+import com.example.composerickandmorty.ui.viewModel.episode.EpisodeViewModel
+import com.example.composerickandmorty.ui.viewModel.location.LocationViewModel
 
 @Composable
 fun NavigationGraph(
     navController: NavHostController,
-    characterViewModel: CharacterViewModel
+    characterViewModel: CharacterViewModel,
+    episodeViewModel: EpisodeViewModel,
+    locationViewModel: LocationViewModel
 ) {
     NavHost(
         navController = navController,
@@ -23,11 +27,11 @@ fun NavigationGraph(
         }
 
         composable(route = BottomNavItem.Episodes.screenRoute) {
-            EpisodesScreen()
+            EpisodesScreen(episodeViewModel)
         }
 
         composable(route = BottomNavItem.Locations.screenRoute) {
-            LocationsScreen()
+            LocationsScreen(locationViewModel)
         }
     }
 }

@@ -8,10 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.composerickandmorty.ui.viewModel.character.CharacterViewModel
+import com.example.composerickandmorty.ui.viewModel.episode.EpisodeViewModel
+import com.example.composerickandmorty.ui.viewModel.location.LocationViewModel
 
 @Composable
 fun MainNavigationScreenView(
-    characterViewModel: CharacterViewModel
+    characterViewModel: CharacterViewModel,
+    episodeViewModel: EpisodeViewModel,
+    locationViewModel: LocationViewModel
 ) {
     val navController = rememberNavController()
     Scaffold(
@@ -24,7 +28,9 @@ fun MainNavigationScreenView(
         ) {
             NavigationGraph(
                 navController = navController,
-                characterViewModel = characterViewModel
+                characterViewModel = characterViewModel,
+                episodeViewModel = episodeViewModel,
+                locationViewModel = locationViewModel
             )
         }
     }

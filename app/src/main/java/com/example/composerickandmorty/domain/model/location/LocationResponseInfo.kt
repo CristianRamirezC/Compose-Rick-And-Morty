@@ -3,10 +3,10 @@ package com.example.composerickandmorty.domain.model.location
 import com.example.composerickandmorty.data.model.location.LocationResponseInfoModel
 
 data class LocationResponseInfo(
-    val numberOfLocations: Int = 0,
-    val numberOfPages: Int = 0,
-    val nextPage: String = "",
-    val previousPage: String = ""
+    val numberOfLocations: Int,
+    val numberOfPages: Int,
+    val nextPage: String?,
+    val previousPage: String?
 )
 
 

@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class EpisodeResponseInfo(
     val numberOfEpisodes: Int,
     val numberOfPages: Int,
-    val nextPage: String,
-    val previousPage: String
+    val nextPage: String?,
+    val previousPage: String?
 )
 
 fun EpisodeResponseInfoModel.toDomain() = EpisodeResponseInfo(

@@ -26,8 +26,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         characterViewModel.onCreate()
-//        episodeViewModel.onCreate()
-//        locationViewModel.onCreate()
+        episodeViewModel.onCreate()
+        locationViewModel.onCreate()
         setContent {
             ComposeRickAndMortyTheme {
                 // A surface container using the 'background' color from the theme
@@ -36,7 +36,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     MainNavigationScreenView(
-                        characterViewModel = characterViewModel
+                        characterViewModel = characterViewModel,
+                        episodeViewModel = episodeViewModel,
+                        locationViewModel = locationViewModel
                     )
                 }
             }
