@@ -39,4 +39,10 @@ class CharacterViewModel
             _isCharacterLoading.postValue(false)
         }
     }
+
+    fun getCharacterById(characterId: Int): Character {
+        return _charactersList.value?.find {
+            it.characterID == characterId
+        }!!
+    }
 }

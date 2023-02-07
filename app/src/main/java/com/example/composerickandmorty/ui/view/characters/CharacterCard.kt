@@ -1,6 +1,7 @@
 package com.example.composerickandmorty.ui.view.characters
 
 import android.graphics.Paint.Style
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
@@ -22,14 +23,16 @@ import java.time.format.TextStyle
 
 @Composable
 fun CharacterCard(
-    character: Character
+    character: Character,
+    onCardClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(180.dp)
-            .padding(10.dp),
-        elevation = 8.dp
+            .padding(10.dp)
+            .clickable { onCardClick() },
+        elevation = 8.dp,
     ) {
         Row(
             modifier = Modifier

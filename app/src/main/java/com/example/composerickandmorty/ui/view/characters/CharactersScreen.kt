@@ -12,7 +12,8 @@ import com.example.composerickandmorty.domain.model.character.Character
 
 @Composable
 fun CharactersScreen(
-    characterViewModel: CharacterViewModel
+    characterViewModel: CharacterViewModel,
+    onCharacterClick: (Character) -> Unit
 ) {
     val characterList: List<Character> by characterViewModel
         .charactersList.observeAsState(initial = emptyList())
@@ -21,7 +22,10 @@ fun CharactersScreen(
             .fillMaxHeight()
     ) {
         items(items = characterList) { character ->
-            CharacterCard(character)
+            CharacterCard(
+                character = character,
+                onCardClick = { onCharacterClick(character) }
+            )
         }
     }
 }
