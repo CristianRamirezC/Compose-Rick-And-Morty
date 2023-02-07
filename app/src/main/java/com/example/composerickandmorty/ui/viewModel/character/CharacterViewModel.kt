@@ -13,6 +13,7 @@ import javax.inject.Inject
 import com.example.composerickandmorty.domain.model.character.Character
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -36,27 +37,23 @@ class CharacterViewModel
     val isErrorGettingCharacters: LiveData<Boolean> = _isErrorGettingCharacters
 
     fun onCreate() {
-        viewModelScope.launch {
 
-            _isCharacterLoading.postValue(true)
+        _isCharacterLoading.postValue(true)
 
-
-            compositeDisposable.add(
-                getCharactersUseCase.getCharacters()
-                    .subscribeOn(Schedulers.io())
-                    .subscribe(
-                        {
-                            _charactersResponseInfo.postValue(it.responseInfo)
-                            _charactersList.postValue(it.responseResultsList)
-                        },
-                        {
-                            _isErrorGettingCharacters.postValue(true)
-                        }
-                    )
-            )
-
-            _isCharacterLoading.postValue(false)
-        }
+        compositeDisposable.add(
+            getCharactersUseCase.getCharacters()
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    {
+                        _charactersResponseInfo.postValue(it.responseInfo)
+                        _charactersList.postValue(it.responseResultsList)
+                        _isCharacterLoading.postValue(false)
+                    },
+                    {
+                        _isErrorGettingCharacters.postValue(true)
+                    }
+                )
+        )
     }
 
     fun getCharacterById(characterId: Int): Character {

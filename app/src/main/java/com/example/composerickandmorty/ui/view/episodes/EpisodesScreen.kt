@@ -14,19 +14,28 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.composerickandmorty.domain.model.episode.Episode
+import com.example.composerickandmorty.ui.view.util.LoadingScreen
 import com.example.composerickandmorty.ui.viewModel.episode.EpisodeViewModel
 
 @Composable
 fun EpisodesScreen(
     episodeViewModel: EpisodeViewModel
 ) {
-    val episodesList: List<Episode> by episodeViewModel.episodesList.observeAsState(initial = emptyList())
+    val episodesList: List<Episode> by
+    episodeViewModel.episodesList.observeAsState(initial = emptyList())
 
-    LazyColumn(
-        modifier = Modifier.fillMaxHeight(),
-    ) {
-        items(items = episodesList) { episode ->
-            EpisodeCard(episode)
+    val isEpisodeLoading: Boolean by
+    episodeViewModel.isEpisodeLoading.observeAsState(initial = true)
+
+    if (isEpisodeLoading) {
+        LoadingScreen()
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxHeight(),
+        ) {
+            items(items = episodesList) { episode ->
+                EpisodeCard(episode)
+            }
         }
     }
 }
