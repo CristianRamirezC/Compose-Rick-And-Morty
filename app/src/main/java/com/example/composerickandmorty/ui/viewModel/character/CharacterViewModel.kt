@@ -5,11 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.composerickandmorty.data.model.character.CharacterResponseModel
 import com.example.composerickandmorty.domain.character.GetCharactersUseCase
 import com.example.composerickandmorty.domain.model.character.CharacterResponseInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.example.composerickandmorty.domain.model.character.Character
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -27,14 +30,30 @@ class CharacterViewModel
     private var _isCharacterLoading = MutableLiveData<Boolean>()
     val isCharacterLoading: LiveData<Boolean> = _isCharacterLoading
 
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+
+    private var _isErrorGettingCharacters = MutableLiveData<Boolean>()
+    val isErrorGettingCharacters: LiveData<Boolean> = _isErrorGettingCharacters
+
     fun onCreate() {
         viewModelScope.launch {
 
             _isCharacterLoading.postValue(true)
 
-            val characters = getCharactersUseCase()
-            _charactersList.postValue(characters.responseResultsList)
-            _charactersResponseInfo.postValue(characters.responseInfo)
+
+            compositeDisposable.add(
+                getCharactersUseCase.getCharacters()
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(
+                        {
+                            _charactersResponseInfo.postValue(it.responseInfo)
+                            _charactersList.postValue(it.responseResultsList)
+                        },
+                        {
+                            _isErrorGettingCharacters.postValue(true)
+                        }
+                    )
+            )
 
             _isCharacterLoading.postValue(false)
         }
@@ -44,5 +63,10 @@ class CharacterViewModel
         return _charactersList.value?.find {
             it.characterID == characterId
         }!!
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 }

@@ -1,18 +1,20 @@
 package com.example.composerickandmorty.data.network.character
 
 import android.util.Log
-import com.example.composerickandmorty.data.model.character.CharacterModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.composerickandmorty.data.model.character.CharacterResponseModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import io.reactivex.Single
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import okhttp3.internal.wait
 import javax.inject.Inject
 
 class CharacterService @Inject constructor(
     private val api: CharacterApiClient
 ) {
-    suspend fun getCharacters(): CharacterResponseModel {
-        return withContext(Dispatchers.IO) {
-            api.getAllCharacters().body() ?: CharacterResponseModel()
-        }
+    private val _charactersResponse = MutableLiveData<CharacterResponseModel>()
+    fun getCharacters(): Single<CharacterResponseModel> {
+        return api.getAllCharacters()
     }
 }
