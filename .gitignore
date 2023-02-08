@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/misc.xml
+.idea/deploymentTargetDropDown.xml
+
+# Built application files
+*.apk
+*.ap_
+.gradle/
+build/

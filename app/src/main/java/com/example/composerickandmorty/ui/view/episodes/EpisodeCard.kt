@@ -7,11 +7,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composerickandmorty.R
 import com.example.composerickandmorty.domain.model.episode.Episode
 
 @Composable
@@ -53,7 +55,7 @@ fun EpisodeCard(
 @Composable
 fun EpisodeInformation(episode: Episode) {
     Text(
-        text = "Episode: ${episode.episodeName}",
+        text = "${stringResource(R.string.episode)} ${episode.episodeName}",
         style = MaterialTheme.typography.h4.copy(
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold

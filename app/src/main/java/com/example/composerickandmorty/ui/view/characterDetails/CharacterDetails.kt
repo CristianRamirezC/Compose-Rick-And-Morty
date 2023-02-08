@@ -6,6 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -13,6 +14,8 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.composerickandmorty.ui.viewModel.character.CharacterViewModel
 import com.example.composerickandmorty.domain.model.character.Character
+import com.example.composerickandmorty.R
+
 
 @Composable
 fun CharacterDetails(
@@ -29,7 +32,7 @@ fun CharacterDetails(
                 .fillMaxWidth()
                 .height(300.dp),
             model = character.characterImage,
-            contentDescription = "character image",
+            contentDescription = stringResource(R.string.characterImage),
             contentScale = ContentScale.Crop
         )
         CharacterDetailsInformation(character)
